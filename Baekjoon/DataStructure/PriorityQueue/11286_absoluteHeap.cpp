@@ -10,7 +10,6 @@ public:
 
 		if (a < 0) a_ = a * -1;
 		else a_ = a;
-
 		if (b < 0) b_ = b * -1;
 		else b_ = b;
 
