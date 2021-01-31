@@ -11,7 +11,6 @@ def solution(s):
                 k=k.lower()
                 answer=answer+k
         answer=answer+' '
-    answer=answer.rstrip()
-    return answer
+    return answer[:-1]
 
 print(solution("try hello world"))
