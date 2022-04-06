@@ -4,6 +4,7 @@ N, M = map(int, input().split())
 board = [input() for _ in range(N)]
 checked_red = [[0]*M for _ in range(N)]
 checked_blue = [[0]*M for _ in range(N)]
+red_x, red_y, blue_x, blue_y = 0, 0, 0, 0
 
 for i in range(N):
     for j in range(M):
@@ -18,7 +19,6 @@ red_cnt, blue_cnt = 0, 0
 q = deque()
 q.append((red_x, red_y, red_cnt, blue_x, blue_y, blue_cnt))
 answer = 0
-
 while q:
     for _ in range(len(q)):
         qred_x, qred_y, qred_cnt, qblue_x, qblue_y, qblue_cnt = q.popleft()
@@ -38,7 +38,7 @@ while q:
             while True:
                 red_x += dx[i]
                 red_y += dy[i]
-                if board[red_x][red_y] == '#':
+                if board[red_x][red_y] == '#':      # 벽에 닿으면 한 칸 뒤로
                     red_x -= dx[i]
                     red_y -= dy[i]
                     break
@@ -68,7 +68,10 @@ while q:
                 else:
                     blue_x -= dx[i]
                     blue_y -= dy[i]
-            if checked_red[red_x][red_y] == 0 or checked_blue[blue_x][blue_y] == 0:
+            if checked_red[red_x][red_y] == 0 or checked_blue[blue_x][blue_y] == 0:     # 방문 안했던 지점
+                checked_red[red_x][red_y] = 1
+                checked_blue[blue_x][blue_y] = 1
                 q.append((red_x, red_y, red_cnt, blue_x, blue_y, blue_cnt))
     answer += 1
 print(-1)       # 실패 (예제 7)
+
