@@ -29,7 +29,7 @@ def solution(x, y, d1, d2):
             loc_people[0] += arr[i - 1][j - 1]
 
     # 2번 선거구
-    for i in range(1, x+d2):
+    for i in range(1, x+d2+1):
         for j in range(N, y, -1):
             if loc[i][j] == 5:
                 break
@@ -55,10 +55,6 @@ def solution(x, y, d1, d2):
     loc_people[4] = total_people - sum(loc_people)
     tmp = max(loc_people) - min(loc_people)
 
-    # for i in range(N+1):
-    #     if loc[3][5] == 5 and loc[6][4] == 5 and loc[5][5] == 5 :
-    #         print(loc[i])
-    # print()
     if tmp < min_people:
         min_people = tmp
 
@@ -82,3 +78,4 @@ for x in range(1, N+1):
                 solution(x, y, d1, d2)
 
 print(min_people)
+
